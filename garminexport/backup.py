@@ -45,9 +45,9 @@ def export_filename(activity, export_format):
     """
     fn = "{time}_{id}{suffix}".format(
         id=activity[0],
-        time=activity[1].isoformat(),
+        time=activity[1].isoformat().split('+')[0],
         suffix=format_suffix[export_format])
-    return fn.replace(':', '_') if os.name == 'nt' else fn
+    return fn.replace(':', '.')
 
 
 def need_backup(activities, backup_dir, export_formats=None):
