@@ -18,3 +18,4 @@ six==1.16.0
     # via python-dateutil
 urllib3==2.0.2
     # via requests
+pytz==2024.1
