@@ -5,6 +5,7 @@ import json
 import logging
 import os
 from datetime import datetime
+import pytz
 
 log = logging.getLogger(__name__)
 
@@ -45,7 +46,7 @@ def export_filename(activity, export_format):
     """
     fn = "{time}_{id}{suffix}".format(
         id=activity[0],
-        time=activity[1].isoformat().split('+')[0],
+        time=activity[1].astimezone(pytz.timezone('Europe/Athens')).replace(microsecond=0).strftime('%Y-%m-%d_%H.%M.%S'),
         suffix=format_suffix[export_format])
     return fn.replace(':', '.')
 
